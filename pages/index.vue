@@ -52,13 +52,6 @@
                           style="height: 220px"
                           contain
                         ></v-img>
-                        <!-- <v-img
-                          class="imageBooks"
-                          :src="book.photolink"
-                          @error="book.photolink || require('../assets/error.png')"
-                          style="height: 220px"
-                          contain
-                        ></v-img> -->
                       </v-col>
                       <v-row>
                         <v-col cols="12" style="min-height: 110px">
