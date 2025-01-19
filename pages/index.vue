@@ -45,13 +45,28 @@
                           margin-bottom: 10px;
                         "
                       >
-                        <v-img :src="book.photolink" contain></v-img>
+                        <v-img
+                          class="imageBooks"
+                          :src="book.photolink"
+                          @error="book.photolink = 'error.png'"
+                          style="height: 220px"
+                          contain
+                        ></v-img>
+                        <!-- <v-img
+                          class="imageBooks"
+                          :src="book.photolink"
+                          @error="book.photolink || require('../assets/error.png')"
+                          style="height: 220px"
+                          contain
+                        ></v-img> -->
                       </v-col>
                       <v-row>
                         <v-col cols="12" style="min-height: 110px">
-                          <p style="font-size: 18px; font-weight: bold; margin: 0">
-                            {{ book.bookname }}
-                          </p>
+                          <div style="height: 54px">
+                            <p style="font-size: 18px; font-weight: bold; margin: 0">
+                              {{ book.bookname }}
+                            </p>
+                          </div>
                           <p style="font-size: 12px; margin: 0; height: 36px">
                             {{ book.detail }}
                           </p>
@@ -183,8 +198,6 @@ export default {
       return this.book.length;
     },
     totalPages() {
-      console.log(this.totalItems);
-      console.log(this.itemLimit);
       return Math.ceil(this.totalItems / this.itemLimit);
     },
   },
@@ -199,18 +212,18 @@ export default {
       });
       return typeBook;
     },
-    addBookToCart(book) {
-      let bookFound = false;
+    addBookToCart(books) {
+      let booksFound = false;
       for (let i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].id === book.id) {
+        if (this.cart[i].id === books.id) {
           this.cart[i].count += 1;
-          bookFound = true;
+          booksFound = true;
           break;
         }
       }
 
-      if (!bookFound) {
-        this.cart.push({ ...book, count: 1 });
+      if (!booksFound) {
+        this.cart.push({ ...books, count: 1 });
       }
     },
     showAlert() {
@@ -225,6 +238,17 @@ export default {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page;
       }
+    },
+    async checkImage(books) {
+      console.log(books);
+      return "../assets/error.png";
+      // try {
+      //   await this.$axios.get(books);
+      // } catch (err) {
+      //   if (err.response.status === 404) {
+      //     books = "error.png";
+      //   }
+      // }
     },
   },
 };

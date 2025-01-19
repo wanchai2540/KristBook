@@ -2,26 +2,16 @@
   <nav>
     <v-row>
       <v-col cols="6">
-        <img class="logo" src="../assets/logo.jpg" alt="" />
+        <img class="logo" src="logo.jpg" alt="" />
       </v-col>
       <v-col cols="6" style="display: flex; justify-content: end">
         <v-badge color="red" v-if="cart.length > 0" :content="cart.length" overlap>
           <v-avatar>
-            <img
-              @click="openModal"
-              class="shopping-cart"
-              src="../assets/shopping-bag.png"
-              alt=""
-            />
+            <img @click="openModal" class="shopping-cart" src="shopping-bag.png" alt="" />
           </v-avatar>
         </v-badge>
         <v-avatar v-else>
-          <img
-            @click="openModal"
-            class="shopping-cart"
-            src="../assets/shopping-bag.png"
-            alt=""
-          />
+          <img @click="openModal" class="shopping-cart" src="shopping-bag.png" alt="" />
         </v-avatar>
         <!-- Modal -->
         <v-dialog v-model="modalVisible" max-width="400px">
@@ -52,7 +42,7 @@
                       <img
                         @click="removeBookById(index)"
                         class="deleteBtnModal"
-                        src="../assets/recycling-bin.png"
+                        src="recycling-bin.png"
                       />
                     </v-col>
                   </v-row>
@@ -62,7 +52,9 @@
                 </v-col>
                 <v-row cols="12">
                   <v-col cols="6"><h3>Total</h3></v-col>
-                  <v-col cols="6" style="text-align: end"><h3>${{ sumTotal() }}</h3></v-col>
+                  <v-col cols="6" style="text-align: end"
+                    ><h3>${{ sumTotal() }}</h3></v-col
+                  >
                 </v-row>
                 <!-- List Book -->
               </v-row>
@@ -123,7 +115,7 @@ export default {
     },
     sumTotal() {
       var total = this.cart.reduce((old, current) => {
-        return old + (current.price * current.count);
+        return old + current.price * current.count;
       }, 0);
       return total;
     },
