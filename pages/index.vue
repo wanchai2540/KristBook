@@ -125,9 +125,7 @@
 </template>
 
 <script>
-import CardItem from "@/components/CardItems.vue";
 import NavBar from "@/components/NavBar.vue";
-import SideBar from "@/components/SideBar.vue";
 
 export default {
   name: "index",
