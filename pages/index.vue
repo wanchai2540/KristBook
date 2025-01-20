@@ -216,6 +216,7 @@ export default {
       if (!booksFound) {
         this.cart.push({ ...books, count: 1 });
       }
+      this.showAlert();
     },
     showAlert() {
       this.titleAlert = "Add Book Successfully";

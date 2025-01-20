@@ -22,7 +22,7 @@
                   <h4>You have {{ cart.length }} books in your cart</h4>
                 </v-col>
                 <!-- List Book -->
-                <v-col cols="12" v-for="(data, index) in cart">
+                <v-col cols="12" v-for="(data, index) in cart" :key="index">
                   <v-row cols="12">
                     <v-col cols="3" style="justify-content: center; display: flex">
                       <img class="imageBookModal" :src="data.photolink" />
@@ -127,14 +127,16 @@ export default {
 .logo {
   width: 10%;
 }
-
+.v-avatar{
+  min-width: 80px !important;
+}
 .shopping-cart {
   width: 6%;
   object-fit: contain;
   margin-right: 1em;
 }
 .v-badge__wrapper {
-  left: -16px !important;
+  left: -30px !important;
   top: 10px !important;
 }
 
